@@ -129,7 +129,9 @@ const SnakeLadder = () => {
         ← Back
       </button>
       <div>
-        <h1 className="text-3xl font-bold mb-4 text-center text-white title-glow font-game">Snake & Ladder</h1>
+        <h1 className="text-2xl md:text-3xl font-bold mb-4 text-center text-white title-glow font-game">
+          Play. Learn. Prevent: A Digital Health Literacy Game for Hypertension Management
+        </h1>
         <div
           className="relative w-[90vw] h-[90vw] sm:w-[70vw] sm:h-[70vw] lg:w-[600px] lg:h-[600px] bg-cover bg-center grid grid-cols-10 border-4 border-purple-300 rounded-lg shadow-2xl overflow-hidden"
           style={{ backgroundImage: "url('board.png')" }}
@@ -139,20 +141,22 @@ const SnakeLadder = () => {
               key={num}
               className="relative w-[9vw] h-[9vw] md:w-[60px] md:h-[60px] flex items-center justify-center"
             >
-              {playerPos === num && (
-                <img
-                  src="blue.png"
-                  alt="Player"
-                  className="absolute w-8 h-10 md:w-12 md:h-12 left-1 top-1 md:left-1 md:top-1 transition-transform duration-300 player-bounce"
-                />
-              )}
-              {botPos === num && (
-                <img
-                  src="red.png"
-                  alt="Bot"
-                  className="absolute w-8 h-10 md:w-12 md:h-12 right-1 bottom-1 md:right-1 md:bottom-1 transition-transform duration-300 player-bounce"
-                />
-              )}
+              <div className="absolute inset-0 flex items-center justify-center">
+                {playerPos === num && (
+                  <img
+                    src="blue.png"
+                    alt="Player"
+                    className="w-8 h-10 md:w-12 md:h-12 transition-transform duration-300 z-10"
+                  />
+                )}
+                {botPos === num && (
+                  <img
+                    src="red.png"
+                    alt="Bot"
+                    className="w-8 h-10 md:w-12 md:h-12 transition-transform duration-300 z-10"
+                  />
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -161,11 +165,11 @@ const SnakeLadder = () => {
             <img
               src="blue.png"
               alt="Player"
-              className="w-8 h-10 md:w-12 md:h-12 player-bounce"
+              className="w-8 h-10 md:w-12 md:h-12"
             />
           )}
           {botPos === 0 && (
-            <img src="red.png" alt="Bot" className="w-8 h-10 md:w-12 md:h-12 player-bounce" />
+            <img src="red.png" alt="Bot" className="w-8 h-10 md:w-12 md:h-12" />
           )}
         </div>
       </div>

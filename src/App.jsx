@@ -59,7 +59,7 @@ const Home = () => {
         ))}      
       </div>
       <h1 className="text-5xl md:text-6xl font-bold mb-12 text-center text-white font-game title-glow">
-        Snake & Ladder
+        Play. Learn. Prevent: A Digital Health Literacy Game for Hypertension Management
       </h1>
       
       <div className="space-y-4 w-full max-w-xs">
