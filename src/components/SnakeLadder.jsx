@@ -45,6 +45,8 @@ const SnakeLadder = () => {
   const [hasPlayerRoll, setHasPlayerRoll] = useState(false);
 
   const rollDiceSound = new Audio("roll.mp3");
+  const snakeSound = new Audio("snake.mp3");
+  const ladderSound = new Audio("ladder.mp3");
 
   const movePlayer = (currentPos, roll, setPos, player) => {
     console.log(currentPos, roll);
@@ -56,10 +58,19 @@ const SnakeLadder = () => {
         setPos(newPos);
       } else {
         clearInterval(interval);
-        if (snakes[newPos]) newPos = snakes[newPos];
-        if (ladders[newPos]) newPos = ladders[newPos];
+        let landedOnSnake = false;
+        let landedOnLadder = false;
+        if (snakes[newPos]) {
+          newPos = snakes[newPos];
+          landedOnSnake = true;
+        }
+        if (ladders[newPos]) {
+          newPos = ladders[newPos];
+          landedOnLadder = true;
+        }
         setPos(newPos);
-
+        if (landedOnSnake) snakeSound.play();
+        if (landedOnLadder) ladderSound.play();
         if (newPos === 100) {
           alert(player + " Wins");
           window.location.reload();
@@ -146,14 +157,14 @@ const SnakeLadder = () => {
                   <img
                     src="blue.png"
                     alt="Player"
-                    className="w-8 h-10 md:w-12 md:h-12 transition-transform duration-300 z-10"
+                    className="w-4 h-5 md:w-6 md:h-6 transition-transform duration-300 z-10"
                   />
                 )}
                 {botPos === num && (
                   <img
                     src="red.png"
                     alt="Bot"
-                    className="w-8 h-10 md:w-12 md:h-12 transition-transform duration-300 z-10"
+                    className="w-4 h-5 md:w-6 md:h-6 transition-transform duration-300 z-10"
                   />
                 )}
               </div>
@@ -165,11 +176,11 @@ const SnakeLadder = () => {
             <img
               src="blue.png"
               alt="Player"
-              className="w-8 h-10 md:w-12 md:h-12"
+              className="w-4 h-5 md:w-6 md:h-6"
             />
           )}
           {botPos === 0 && (
-            <img src="red.png" alt="Bot" className="w-8 h-10 md:w-12 md:h-12" />
+            <img src="red.png" alt="Bot" className="w-4 h-5 md:w-6 md:h-6" />
           )}
         </div>
       </div>
@@ -192,9 +203,9 @@ const SnakeLadder = () => {
         </div>
         <div className="mt-2 font-bold flex w-40 justify-center items-center gap-2 text-white">
           {turn === "You" ? (
-            <img src="blue.png" alt="Bot" className="w-8 h-10 md:w-12 md:h-12" />
+            <img src="blue.png" alt="Bot" className="w-4 h-5 md:w-6 md:h-6" />
           ) : (
-            <img src="red.png" alt="Bot" className="w-8 h-10 md:w-12 md:h-12" />
+            <img src="red.png" alt="Bot" className="w-4 h-5 md:w-6 md:h-6" />
           )}
           <span>{turn.toUpperCase()}</span>
         </div>
